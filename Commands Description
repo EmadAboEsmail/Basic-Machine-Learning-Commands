@@ -1,0 +1,157 @@
+# loading Python Libraries
+import numpy as np
+import scipy as sp
+import pandas as pd
+import matplotlib as mpl
+import seaborn as sns
+
+# Read a csv file from a given url
+df=pd.read_csv("http://rcs.bu.edu/examples/python/data_analysis/Salaries.csv")
+
+# list first 5 records
+df.head()
+
+# list first 10 records
+df.head(10)
+
+# check a prticular column type
+df['salary'].dtype
+
+# check types for all the columns
+df.dtypes
+
+# list  of columns
+df.columns
+
+# list the rows lables and columns names
+df.axes
+
+# number of dimensions
+df.ndim
+
+# number of elements
+df.size
+
+# return a tuple representing the dimensionally
+df.shape
+
+# numpy representation od data
+df.values
+
+#last n rows
+df.tail(5)
+
+# generate descriptive statistics
+df.describe()
+
+# return maximum values for all numeric colulmns
+df.max()
+
+# return minimum values for all numeric colulmns
+df.min()
+
+# return mean values for all numeric columns
+df.mean()
+
+# return median values for all numeric columns
+df.median()
+
+# standard deviation
+df.std()
+
+# return a random sample of data frame
+df.sample(5)
+
+# drop all the records with missing values
+df.dropna()
+
+# subset the data frame using column name
+df['sex']
+
+#using column name as attributes
+df.sex
+
+#how many values in salary columns 
+df['salary'].count()
+
+# calculating salary mean
+df.salary.mean()
+
+#using group by method 
+#split the data into groups based on some criteria
+#calculate statistics to each group
+#similar to dplyr()  function in R
+
+
+#group data using rank
+df_rank=df.groupby(['rank'])
+
+#claculate mean value for each numeric column per each group
+df_rank.mean()
+
+# calculate mean salary  for each professor rank
+df.groupby('rank')[['salary']].mean()
+
+# Calculate mean salary for each professor rank
+df.groupby(['rank'],sort=False)[['salary']].mean()
+
+# Calculate mean salary for each professor rank
+df.groupby(['rank'],sort=True)[['salary']].mean()
+
+# Data Filtering
+
+#calculating salary greater than 120000
+df_sub=df[df['salary']>120000]
+print(df_sub)
+
+#select only those rows that contain female professors:
+df_f=df[df['sex'] == 'Female']
+print(df_f)
+
+# SLICING
+
+# select column salry
+df['salary']
+
+# select colum salary and column rank
+df[['rank','salary']]
+
+# showing more column
+df[['rank','sex','salary']]
+
+
+#SELECTING ROWS
+
+#selct rows by their position :
+print(df[10:20])
+
+# selct row by thier labels
+df.loc[10:20,['rank','sex','salary']]
+
+#Last row
+df.iloc[-1]
+
+# i+1 row
+df.iloc[2]
+
+#first column
+df.iloc[:,0]
+
+# last column 
+df.iloc[:,-1]
+
+# particular value of rows and columns
+df.iloc[[0,5],[1,3]]
+
+# some range of row and columns
+df.iloc[1:5,0:2]
+
+#SORTING
+
+#create a newe data frame from the original sorted by the column salary
+df_sorted = df.sort_values(by ='salary')
+df_sorted.head()
+
+# sorting data using 2 or more columns
+df_sorted=df.sort_values(by=['service','salary'],ascending=[True, False])
+df_sorted.head(10)
