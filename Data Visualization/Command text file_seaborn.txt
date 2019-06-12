@@ -1,0 +1,29 @@
+#seaborn
+
+import seaborn as sns
+Tips =sns.load_dataset('tips')
+Tips.head() #printing first 5 data
+
+
+#Distance plot
+sns.distplot(Tips['total_bill'])
+
+
+#joint plot
+sns.jointplot(x='total_bill',y='tip',data=Tips)
+
+
+#Pair plot
+sns.pairplot(data=Tips)
+
+#Box plot
+sns.boxplot(data=Tips)
+
+
+#Categorical plot
+
+##Bar plot
+sns.barplot(x='sex',y='total_bill',data=Tips)
+
+##Count plot
+sns.countplot(x='sex',data=Tips)

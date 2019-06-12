@@ -1,0 +1,44 @@
+Matplot library
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+#Line chart plotting
+x=[1,2,3,4]
+y=[1,2,3,4]
+plt.plot(x,y)
+plt.show()
+
+
+#Multiple line plotting on same graph
+x=np.arange(1,10) # values from 1 to 10
+y1=x+2
+y2=x*6
+y3=x/5
+plt.plot(x,y1, x,y2, x,y3)
+plt.show()
+
+
+#Bar chart plotting
+plt.xlabel("this is x-axis")
+plt.ylabel("this is y-axis")
+plt.title("simple bar chart")
+plt.bar([1,2,3],[4,5,6])
+plt.show()
+
+
+#Pie chart plotting
+percentage=[60,30,10]
+language=["Python","Java","C++"]
+plt.pie(percentage,labels=language)
+plt.title("Simple pie chart")
+plt.show()
+
+
+#Scatter plot
+x=np.random.rand(100)
+y=np.random.rand(100)
+plt.title("Scatter Plot")
+plt.scatter(x,y)
+plt.show()
